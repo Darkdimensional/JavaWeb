@@ -1,0 +1,44 @@
+tomcat解压后目录：
+bin:可执行文件（startup.bat shutdown.bat）
+conf:配置文件（server.xml）
+lib：Tomcat依赖的jar文件
+log：临时文件
+WebApps：可执行的项目
+
+配置Tomcat
+1.配置jdk（必须配置JAVA_HOME）
+	java_home classPath path
+2.配置catalina_home
+
+双击bin/startup.bat启动Tomcat。
+常见错误：可能与其他服务的端口号冲突
+Tomcat端口默认8080（此端口号比较常见，容易冲突），建议修改端口
+
+访问：http://localhost:8080/
+
+常见状态：
+200：一切正常
+300/301：页面重定向
+404：资源不存在
+403：权限不足
+500：服务器内部错误（代码有误）
+其他编码
+
+虚拟路径
+a.方式一
+将web项目配置到webapps以外的目录
+conf/server.xml中配置
+host标签
+<Context docBase="实际路径" path="虚拟路径">
+b.方式二
+J:\tomcat\tomcat\apache-tomcat-8.5.32\conf\Catalina\localhost
+中新建“项目名.xml”中新增一行
+<Context docBase="实际路径" path="虚拟路径">
+
+虚拟主机
+a: conf/server.xml中设置Engine标签
+	增加 <Host appBase="项目位置" name="www.test.com">
+		<Context docBase="实际路径" path="虚拟路径">
+		</Host>
+b：c:\windows\System32\drivers\etc\host
+	增加 127.0.0.1 www.test.com
