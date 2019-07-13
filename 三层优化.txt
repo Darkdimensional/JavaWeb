@@ -1,0 +1,18 @@
+一、三层结构
+与MVC设计模式的目标一致，都是为了 解耦合、提高代码复用；
+区别，二者对项目的理解的角度不同
+二、与MVC对比
+表示层（USL，User Show Layer；视图层）
+-前台：对应于MVC中的View，用于和用户交互、界面显示
+jsp js html css jquery 等web签到技术
+-后台：对应于MV中的Controller，用于控制跳转、调用业务逻辑层
+Servlet(SpringMVC Struts2),位于xxx.servlet包中
+业务逻辑层（BLL，Business Logic Layer ；Service层）
+-接收表示层的请求 调用
+-组装数据访问层，逻辑性的操作（增删改查 ， 删：查+删）
+一般位于 xxx.service包（也可以为： xxx.manager  ,xxx.bll）
+数据访问层（DAL，Data Access Layer ；Dao层）
+-直接访问数据的操作，原子性的操作（增删改查）
+一般位于 xxx.dao包
+三、三层间的关系
+上层将请求传递给下层，下层处理完返回给上层。
