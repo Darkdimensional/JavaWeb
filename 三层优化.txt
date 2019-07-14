@@ -1,6 +1,8 @@
 一、三层结构
 与MVC设计模式的目标一致，都是为了 解耦合、提高代码复用；
 区别，二者对项目的理解的角度不同
+
+
 二、与MVC对比
 表示层（USL，User Show Layer；视图层）
 -前台：对应于MVC中的View，用于和用户交互、界面显示
@@ -14,5 +16,25 @@ Servlet(SpringMVC Struts2),位于xxx.servlet包中
 数据访问层（DAL，Data Access Layer ；Dao层）
 -直接访问数据的操作，原子性的操作（增删改查）
 一般位于 xxx.dao包
+
+
 三、三层间的关系
 上层将请求传递给下层，下层处理完返回给上层。
+上层依赖于下层，依赖：代码的理解，就是持有成员变量 或者理解为：有A的前提 是现有B （先有数据库 才有Dao层 ，Dao层依赖数据库）
+
+
+四、加入接口
+建议面向接口开发：先接口-再实现类
+--service、dao加入接口
+--接口与实现类的命名规范
+接口：interface	起名：I+实体类层所在包名	IStudentService
+实现类：implements	起名：实体类层所在包名Impl	StudentServiceImpl
+以后使用接口/实现类时，推荐写法：
+接口 x = new 实现类
+IStudentDao studentDao = new StudentDaoImpl();
+
+
+
+五、DBUtil 通用的数据库帮助类，可以简化Dao层的代码量
+帮助类一般建议写在 xxx.util包。
+方法重构：将多个方法的共同代码提炼出来，单独写个方法，以后只要引用这个方法就可以了
